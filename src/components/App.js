@@ -11,7 +11,16 @@ class App extends React.Component{
     this.state = {count:0}
     this.handleClick = this.handleClick.bind(this)
   }
+  
+  shouldComponentUpdate(nextProps, nextState) {
+    const isCountEven = nextState.count % 2 === 0;
 
+    if (isCountEven) {
+      return true;
+    }
+
+    return false;
+  }
 
   render(){
     console.log(`Rendering with count:-${this.state.count}`)
